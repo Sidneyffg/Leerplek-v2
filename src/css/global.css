@@ -1,0 +1,15 @@
+:root {
+  --background: #1f2223;
+  --surface: #181a1b;
+  --primary: var(--surface);
+  --accent: #8c69c6;
+  --text: #ffffff;
+  --text-trans: #c7c8c8;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+}
