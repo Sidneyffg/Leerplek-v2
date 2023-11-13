@@ -1,6 +1,11 @@
-import Home from "./pages/home";
+import { HoneyApp } from "@honeyjs/core";
 
-console.log("hi");
-setTimeout(() => {
-  console.log("delayed hi")
-}, 1000);
+const App = HoneyApp({
+  root: document.querySelector("#app")
+});
+
+App.render(() => (
+  <>
+    <h1>Hello, world</h1>
+  </>
+));

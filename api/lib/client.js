@@ -1,6 +1,5 @@
 import { existsSync, readFileSync, lstatSync } from "fs";
 import { join } from "path";
-import proxy from "http-proxy";
 
 import env from "./env.js";
 const PROD = env().PROD;

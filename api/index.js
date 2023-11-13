@@ -21,5 +21,3 @@ app.get("*", handleFrontendRequest);
 app.listen(PORT, () => {
   console.log(`App loaded in ${env().PROD == "true" ? "production" : "development"} mode, listening at port: ${PORT}`);
 });
-
-// /(href|src)="([^\"]*)"/gi

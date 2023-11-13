@@ -5,17 +5,17 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@honeyjs/core':
+    specifier: ^0.2.3
+    version: 0.2.3
   express:
     specifier: ^4.18.2
     version: 4.18.2
-  http-proxy:
-    specifier: ^1.18.1
-    version: 1.18.1
 
 devDependencies:
   '@honeyjs/vite-loader':
-    specifier: ^0.2.2
-    version: 0.2.2
+    specifier: ^0.2.3
+    version: 0.2.3
   concurrently:
     specifier: ^8.2.2
     version: 8.2.2
@@ -240,8 +240,12 @@ packages:
     dev: true
     optional: true
 
-  /@honeyjs/vite-loader@0.2.2:
-    resolution: {integrity: sha512-ZwEDf9zqqEbIW2B6uBr0V5JWZJxs+YRSbcAPQYpn8d6SRddu+ZKI2hEotpq1T6nfU6ZWKN9qk/HllctFRJEX4g==}
+  /@honeyjs/core@0.2.3:
+    resolution: {integrity: sha512-rNf4cog+BUoMYD+Ja0RNoj1wYiRWlHKNFXVfIVQsz6t+mMe1uDr/M6w825pYAH2QrTf3zzB/0hy9ow+8ZsP6Zw==}
+    dev: false
+
+  /@honeyjs/vite-loader@0.2.3:
+    resolution: {integrity: sha512-gXPHE6XHLx5EbFbriaIifetGsbxaBMWTLgMcGwgxPnpAqhgihcGLPoJF7igC9drW/8bhcn+nS+J2vd8OncDQKg==}
     dev: true
 
   /@polka/url@1.0.0-next.23:
@@ -619,10 +623,6 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /eventemitter3@4.0.7:
-    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
-    dev: false
-
   /execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
     engines: {node: '>=10'}
@@ -712,16 +712,6 @@ packages:
       unpipe: 1.0.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /follow-redirects@1.15.3:
-    resolution: {integrity: sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
     dev: false
 
   /forwarded@0.2.0:
@@ -833,17 +823,6 @@ packages:
       setprototypeof: 1.2.0
       statuses: 2.0.1
       toidentifier: 1.0.1
-    dev: false
-
-  /http-proxy@1.18.1:
-    resolution: {integrity: sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==}
-    engines: {node: '>=8.0.0'}
-    dependencies:
-      eventemitter3: 4.0.7
-      follow-redirects: 1.15.3
-      requires-port: 1.0.0
-    transitivePeerDependencies:
-      - debug
     dev: false
 
   /human-signals@2.1.0:
@@ -1208,10 +1187,6 @@ packages:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /requires-port@1.0.0:
-    resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
-    dev: false
 
   /rollup@3.29.4:
     resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}

@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import inspect from "vite-plugin-inspect";
+import honey from "@honeyjs/core/plugin";
 import loader from "@honeyjs/vite-loader";
 
 export default defineConfig({
@@ -12,7 +13,13 @@ export default defineConfig({
   },
   plugins: [
     inspect(),
-    loader()
+    honey({
+      addHMRAccept: true,
+      transformCached: false
+    }),
+    loader({
+      effect: "import { createEffect } from '@honeyjs/core'",
+    })
   ],
   server: {
     host: true,
