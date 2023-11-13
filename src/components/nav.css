@@ -1,0 +1,31 @@
+:root {
+  --side-width: 12rem;
+  --top-height: 5rem;
+}
+
+nav.side {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--side-width);
+  background: var(--accent);
+}
+
+nav.top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100% - var(--side-width));
+  height: var(--top-height);
+
+  display: flex;
+  padding: 1rem;
+  flex-direction: row;
+  align-content: flex-end;
+  gap: 1rem;
+}
+
+.filler {
+  margin-inline: auto;
+}

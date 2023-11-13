@@ -2,7 +2,8 @@
   --background: #1f2223;
   --surface: #181a1b;
   --primary: var(--surface);
-  --accent: #8c69c6;
+  --accent: #6637b3;
+  --accent-blue: #579ec1;
   --text: #ffffff;
   --text-trans: #c7c8c8;
 }
@@ -11,5 +12,31 @@ html,
 body {
   margin: 0;
   background: var(--background);
+  color: var(--text);
+  height: 100%;
+  width: 100%;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
   color: var(--text);
 }

@@ -3,3 +3,4 @@ dist
 .env
 .vscode
 .vercel
+.vsls.json

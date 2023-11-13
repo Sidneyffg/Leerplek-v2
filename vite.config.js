@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import path from "path";
 import inspect from "vite-plugin-inspect";
 import honey from "@honeyjs/core/plugin";
 import loader from "@honeyjs/vite-loader";
@@ -10,6 +11,11 @@ export default defineConfig({
     minify: true,
     emptyOutDir: true,
     manifest: true
+  },
+  resolve: {
+    alias: [
+      { find: '@', replacement: path.resolve("src") }
+    ],
   },
   plugins: [
     inspect(),
@@ -25,5 +31,5 @@ export default defineConfig({
     host: true,
     strictPort: 5173,
     origin: "http://127.0.0.1:8080"
-  },
+  }
 });
