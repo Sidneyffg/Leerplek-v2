@@ -1,22 +1,15 @@
 import "./nav.css";
 import { Icon } from "./icons";
-import { createID } from "@/js/utils";
+import * as fonts from "@/styles/fonts";
+import * as layout from "@/styles/layout";
 
-/**
- * @type {React.CSSProperties}
- */
-const flexRow = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center"
-}
+import { createID } from "@/js/utils";
 
 export function Nav() {
   return (
     <>
       <nav className="side"></nav>
       <nav className="top">
-        <div className="filler"></div>
         <Search />
         <Account />
       </nav>
@@ -29,14 +22,23 @@ export function Search(props) {
   return (
     <label for={id} style={{
       height: "3rem",
-      width: "20rem",
+      width: "min(calc(100% - 4rem), 30rem)",
       background: "var(--surface)",
       borderRadius: "1.5rem",
       padding: ".5rem 1rem",
-      ...flexRow
+      ...layout.flexRow
     }}>
       <Icon icon="search" />
-      <input type="text" id={id} placeholder="Search..." />
+      <input type="text" id={id} placeholder="Search" style={{
+        background: "transparent",
+        border: "none",
+        outline: "none",
+        width: "calc(100% - 2rem)",
+        display: "block",
+        height: "100%",
+        paddingLeft: ".5rem",
+        ...fonts.body
+      }} />
     </label>
   )
 }

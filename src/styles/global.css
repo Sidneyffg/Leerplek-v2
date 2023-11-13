@@ -4,8 +4,7 @@
   --primary: var(--surface);
   --accent: #6637b3;
   --accent-blue: #579ec1;
-  --text: #ffffff;
-  --text-trans: #c7c8c8;
+  --text: #c7c8c8;
 }
 
 html,
@@ -15,6 +14,7 @@ body {
   color: var(--text);
   height: 100%;
   width: 100%;
+  font-family: "Poppins", sans-serif;
 }
 
 #app {
@@ -34,6 +34,35 @@ h5,
 h6,
 p {
   margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 4.21rem;
+}
+
+h2 {
+  font-size: 3.158rem;
+}
+
+h3 {
+  font-size: 2.369rem;
+}
+
+h4 {
+  font-size: 1.777rem;
+}
+
+h5 {
+  font-size: 1.333rem;
 }
 
 a {
