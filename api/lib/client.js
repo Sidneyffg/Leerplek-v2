@@ -12,7 +12,7 @@ let _entry = null;
  */
 export function handleFrontendRequest(req, res) {
   let asset = getAsset(req, res);
-  if (asset.found == true) {
+  if (asset.found) {
     res.setHeader("Content-Type", asset.type);
     res.end(asset.src);
     return;
@@ -86,7 +86,7 @@ function parseHTML(src, prod, req) {
   if (prod == "false") {
     return parseUrls(src, req).replace(/\<\/body>/i, `
         <!-- development script -->
-        <script type="module" src="http://localhost:5173/@vite/client"></script>
+        <script type="module" src="${env().DEV_SERVER_ADDRESS}/@vite/client"></script>
       </body>
     `);
   } else {
@@ -112,8 +112,8 @@ function parseUrls(src, req) {
 
   for (const i of res) {
     if (src.indexOf(i[0]) == -1 || i[1].startsWith("http")) continue;
-    if (i[1].startsWith("/")) src = src.replace(i[1], `http://localhost:5173${i[1]}`);
-    else if (i[1].startsWith("./")) src = src.replace(i[1], `http://localhost:5173${url}/${i[1].slice(2)}`);
+    if (i[1].startsWith("/")) src = src.replace(i[1], `${env().DEV_SERVER_ADDRESS}${i[1]}`);
+    else if (i[1].startsWith("./")) src = src.replace(i[1], `${env().DEV_SERVER_ADDRESS}${url}/${i[1].slice(2)}`);
   }
 
   return src;

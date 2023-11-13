@@ -46,3 +46,11 @@ https://www.section.io/engineering-education/how-to-build-authentication-api-wit
 - [ ] Backend
   - [ ] API routes
   - [ ] Authentication (JWT)
+
+## ENV
+```
+PROD=false                                              # Force production mode if set to true
+DEV_SERVER_PUBLIC=false                                 # Whether to serve on public address or not
+DEV_SERVER_ADDRESS_LOCAL=http://localhost:5173          # Local address
+DEV_SERVER_ADDRESS_PUBLIC=http://<your public ip>:5173  # Public address
+```

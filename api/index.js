@@ -19,5 +19,5 @@ app.get("/api/*", (_req, res) => {
 app.get("*", handleFrontendRequest);
 
 app.listen(PORT, () => {
-  console.log(`App loaded in ${env().PROD == "true" ? "production" : "development"} mode, listening at port: ${PORT}`);
+  console.log(`App loaded in ${env().PROD == "true" ? "production" : "development"} mode, listening at: ${env().DEV_SERVER_ADDRESS}`);
 });

@@ -9,7 +9,7 @@
     "start:backend": "node .",
     "start:backend:reload": "nodemon .",
     "start": "concurrently -p [{name}] -n VITE,NODE -s all pnpm:start:frontend pnpm:start:backend",
-    "start:reload": "concurrently -p [{name}] -n VITE,NODE -s all pnpm:start:frontend -i pnpm:start:backend:reload",
+    "start:reload": "concurrently -p [{name}] -n VITE,NODE -s all pnpm:start:frontend pnpm:start:backend:reload",
     "build": "vite build",
     "preview": "vite preview",
     "prod": "node .",
@@ -26,7 +26,7 @@
     "vite-plugin-inspect": "^0.7.42"
   },
   "dependencies": {
-    "@honeyjs/core": "^0.2.3",
+    "@honeyjs/core": "^0.2.4",
     "express": "^4.18.2"
   },
   "nodemonConfig": {
@@ -37,7 +37,8 @@
       "node_modules/**"
     ],
     "watch": [
-      "api/"
+      "api/",
+      ".env"
     ],
     "ext": "js,json"
   }

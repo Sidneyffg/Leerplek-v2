@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@honeyjs/core':
-    specifier: ^0.2.3
-    version: 0.2.3
+    specifier: ^0.2.4
+    version: 0.2.4
   express:
     specifier: ^4.18.2
     version: 4.18.2
@@ -240,8 +240,8 @@ packages:
     dev: true
     optional: true
 
-  /@honeyjs/core@0.2.3:
-    resolution: {integrity: sha512-rNf4cog+BUoMYD+Ja0RNoj1wYiRWlHKNFXVfIVQsz6t+mMe1uDr/M6w825pYAH2QrTf3zzB/0hy9ow+8ZsP6Zw==}
+  /@honeyjs/core@0.2.4:
+    resolution: {integrity: sha512-pjq/mjDL+X06FWTWIAaBAM/EPf5qswJ5gLP9o2qI2poHQG4DeThsjNyOHFlVVmmd0YiidGuXtt1nmSAwF5xqKg==}
     dev: false
 
   /@honeyjs/vite-loader@0.2.3:
