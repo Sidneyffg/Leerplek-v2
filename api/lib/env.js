@@ -21,7 +21,7 @@ export function load() {
   if (existsSync(join(process.cwd(), ".env"), "utf-8")) {
     const src = readFileSync(join(process.cwd(), ".env"), "utf-8");
     if (!src) {
-      process.env.PROD = env.PROD = "true";
+      env.PROD = "true";
       return env;
     }
 
@@ -31,6 +31,7 @@ export function load() {
   if (process.env.npm_lifecycle_event == "prod" || process.env.PROD == "true" || process.env.VERCEL_ENV) env.PROD = "true";
   loaded = true;
   // Load extra env variables
+  process.env.NODE_ENV = env.PROD == "true" ? "production" : "development";
   env.DEV_SERVER_ADDRESS = getDevAddress();
 
   return env;
@@ -41,6 +42,7 @@ function parse(env) {
   let res = {}
   const props = env.split("\n");
   props.forEach(e => {
+    if (e.length <= 2) return;
     const [prop, value] = e.split("=");
     if (value.includes("#")) res[prop.trim()] = value.toString().split("#")[0].trim().replaceAll('"', "");
     else res[prop.trim()] = value.toString().trim().replaceAll('"', "");

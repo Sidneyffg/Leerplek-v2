@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import path from "path";
+import vike from "vike/plugin";
 import inspect from "vite-plugin-inspect";
 import honey from "@honeyjs/core/plugin";
 import loader from "@honeyjs/vite-loader";
@@ -13,23 +14,23 @@ export default defineConfig({
     manifest: true
   },
   resolve: {
-    alias: [
-      { find: '@', replacement: path.resolve("src") }
-    ],
+    alias: {
+      "#src": path.resolve("src")
+    },
+  },
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+    jsxInject: 'import { h, Fragment } from "@honeyjs/dom/jsx-runtime"'
   },
   plugins: [
+    vike(),
     inspect(),
-    honey({
-      addHMRAccept: true,
-      transformCached: false
-    }),
     loader({
-      effect: "import { createEffect } from '@honeyjs/core'",
+      effect: "import { createEffect } from '@honeyjs/dom'",
     })
   ],
   server: {
-    host: true,
-    strictPort: 5173,
-    origin: "http://127.0.0.1:8080"
+    host: true
   }
 });

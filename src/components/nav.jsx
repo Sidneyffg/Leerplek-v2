@@ -1,9 +1,9 @@
 import "./nav.css";
 import { Icon } from "./icons";
-import * as fonts from "@/styles/fonts";
-import * as layout from "@/styles/layout";
+import * as fonts from "#src/styles/fonts";
+import * as layout from "#src/styles/layout";
 
-import { createID } from "@/js/utils";
+import { createID } from "#src/js/utils";
 
 export function Nav() {
   return (
