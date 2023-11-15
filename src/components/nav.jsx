@@ -50,6 +50,8 @@ export function Account(props) {
       width: "3rem",
       borderRadius: "1.5rem",
       background: "var(--surface)"
+    }} onClick={() => {
+      console.log("hi");
     }}>
 
     </div>

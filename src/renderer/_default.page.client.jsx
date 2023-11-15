@@ -6,6 +6,7 @@ import { renderToDom, hydrateDom } from "@honeyjs/dom";
 async function render(pageContext) {
   const { Page } = pageContext;
   const root = document.querySelector("#app") ?? document.querySelector("#root");
+  if (!root) console.error("No root element (div#app or div#root) provided");
 
   if (root.innerHTML === '' || !pageContext.isHydration) {
     // SPA (Render page)
