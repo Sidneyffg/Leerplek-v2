@@ -1,10 +1,14 @@
-import { escapeInject } from "vike/server";
+import { renderToHTML } from "@honeyjs/dom";
+import { dangerouslySkipEscape, escapeInject } from "vike/server";
 
 /** 
  * @param {import("vike/types").PageContext} pageContext 
  */
 async function render(pageContext) {
-  //const { Page, pageProps } = pageContext;
+  const { Page, pageProps } = pageContext;
+  let pageHTML = "";
+  if (Page) pageHTML = renderToHTML(Page);
+
   return escapeInject`
   <!DOCTYPE html>
   <html lang="en" dir="ltr">
@@ -27,7 +31,7 @@ async function render(pageContext) {
       <meta name="theme-color" content="#8C69C6" />
     </head>
     <body>
-      <div id="app"></div>
+      <div id="app">${dangerouslySkipEscape(pageHTML)}</div>
     </body>
   </html>
   `

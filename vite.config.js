@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import path from "path";
 import vike from "vike/plugin";
 import inspect from "vite-plugin-inspect";
-import honey from "@honeyjs/core/plugin";
 import loader from "@honeyjs/vite-loader";
 
 export default defineConfig({

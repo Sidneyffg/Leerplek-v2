@@ -1,3 +1,5 @@
+import { renderToDom, hydrateDom } from "@honeyjs/dom";
+
 /** 
  * @param {import("vike/types").PageContext} pageContext 
  */
@@ -10,23 +12,8 @@ async function render(pageContext) {
     renderToDom(root, Page);
   } else {
     // SSR (Hydrate page)
+    hydrateDom(root, Page);
   }
 }
 
 export { render }
-
-/**
- * @param {Function} component 
- */
-function renderToDom(root, component) {
-  const contents = component();
-  root.innerHTML = "";
-
-  if (Array.isArray(contents)) {
-    contents.flat(Infinity).forEach(child => {
-      root.appendChild(child);
-    })
-  } else {
-    root.appendChild(contents);
-  }
-}
