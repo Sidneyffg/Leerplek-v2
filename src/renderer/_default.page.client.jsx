@@ -13,7 +13,7 @@ async function render(pageContext) {
     renderToDom(root, Page);
   } else {
     // SSR (Hydrate page)
-    hydrateDom(root, Page);
+    hydrateDom(root, Page, { overwrite: false });
   }
 }
 

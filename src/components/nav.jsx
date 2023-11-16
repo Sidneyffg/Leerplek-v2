@@ -4,6 +4,7 @@ import * as fonts from "#src/styles/fonts";
 import * as layout from "#src/styles/layout";
 
 import { createID } from "#src/js/utils";
+import { createSignal } from "@honeyjs/dom";
 
 export function Nav() {
   return (
@@ -44,16 +45,15 @@ export function Search(props) {
 }
 
 export function Account(props) {
+  const [active, setActive] = createSignal(false);
   return (
     <div style={{
       height: "3rem",
       width: "3rem",
       borderRadius: "1.5rem",
-      background: "var(--surface)"
-    }} onClick={() => {
-      console.log("hi");
-    }}>
-
+      background: () => active() == true ? "var(--accent)" : "var(--surface)"
+    }} onClick={() => setActive(!active())}>
+      {() => "H"}
     </div>
   )
 }
