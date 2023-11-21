@@ -1,4 +1,4 @@
-import { renderToHTML } from "@honeyjs/dom";
+import { renderToHTML, renderToTree } from "@honeyjs/dom";
 import { dangerouslySkipEscape, escapeInject } from "vike/server";
 
 /** 

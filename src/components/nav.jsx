@@ -4,7 +4,7 @@ import * as fonts from "#src/styles/fonts";
 import * as layout from "#src/styles/layout";
 
 import { createID } from "#src/js/utils";
-import { createSignal } from "@honeyjs/dom";
+import { createEffect, createSignal, createRef } from "@honeyjs/dom";
 
 export function Nav() {
   return (
@@ -20,6 +20,8 @@ export function Nav() {
 
 export function Search(props) {
   const id = createID();
+  const inputRef = createRef();
+
   return (
     <label for={id} style={{
       height: "3rem",
@@ -39,20 +41,23 @@ export function Search(props) {
         height: "100%",
         paddingLeft: ".5rem",
         ...fonts.body
-      }} />
+      }}
+        ref={inputRef}
+        onKeyUp={() => console.log(inputRef().value)} />
     </label>
   )
 }
 
 export function Account(props) {
   const [active, setActive] = createSignal(false);
+
   return (
     <div style={{
       height: "3rem",
       width: "3rem",
       borderRadius: "1.5rem",
       background: () => active() == true ? "var(--accent)" : "var(--surface)"
-    }} onClick={() => setActive(!active())}>
+    }} onClick={() => setActive(e => !e)}>
       {() => "H"}
     </div>
   )
