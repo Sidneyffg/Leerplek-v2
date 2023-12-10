@@ -3,6 +3,7 @@ import path from "path";
 import vike from "vike/plugin";
 import inspect from "vite-plugin-inspect";
 import loader from "@honeyjs/vite-loader";
+import hmrPlug from "#api/lib/plugin.js";
 
 export default defineConfig({
   root: "./src",
@@ -27,7 +28,8 @@ export default defineConfig({
     inspect(),
     loader({
       effect: "import { createEffect } from '@honeyjs/dom'",
-    })
+    }),
+    hmrPlug()
   ],
   server: {
     host: true

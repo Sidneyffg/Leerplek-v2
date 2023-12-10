@@ -4,28 +4,21 @@
   "main": "./api/index.js",
   "type": "module",
   "scripts": {
-    "init": "pnpm install",
-    "start:frontend": "vite",
-    "start:backend": "node .",
-    "start:backend:reload": "nodemon .",
-    "start": "concurrently -p [{name}] -n VITE,NODE -s all pnpm:start:frontend pnpm:start:backend",
-    "start:reload": "concurrently -p [{name}] -n VITE,NODE -s all pnpm:start:frontend pnpm:start:backend:reload",
     "build": "vite build",
     "preview": "vite preview",
     "prod": "node .",
-    "dev": "pnpm start"
+    "dev": "nodemon ."
   },
   "author": "Sidneyffg, Codefoxdev",
   "license": "Apache-2.0",
   "private": true,
   "devDependencies": {
     "@honeyjs/vite-loader": "^0.2.3",
-    "concurrently": "^8.2.2",
     "nodemon": "^3.0.1",
     "vite-plugin-inspect": "^0.7.42"
   },
   "dependencies": {
-    "@honeyjs/dom": "link:../../lib/@honeyjs/dom",
+    "@honeyjs/dom": "^0.2.5",
     "express": "^4.18.2",
     "mongodb": "^6.2.0",
     "vike": "^0.4.145",
