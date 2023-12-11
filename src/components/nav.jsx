@@ -27,6 +27,7 @@ export function Nav() {
       </nav>
       <nav className="top">
         <Search />
+        <CreateBtn />
       </nav>
     </>
   )
@@ -59,6 +60,49 @@ export function Search(props) {
         ref={inputRef}
         onKeyUp={() => console.log(inputRef().value)} />
     </label>
+  )
+}
+
+export function CreateBtn(props) {
+  const [popupActive, setPopupActive] = createSignal(false);
+
+  return (
+    <div className="create-btn" style={{
+      position: "relative",
+      width: "12rem"
+    }}>
+      <div style={{
+        ...layout.flexRow,
+        justifyContent: "center",
+        height: "3rem",
+        width: "12rem",
+        gap: "0.5rem",
+        background: "var(--accent)",
+        borderRadius: "1.5rem",
+        paddingInline: "1.5rem",
+        cursor: "pointer",
+      }} onClick={() => setPopupActive(e => !e)}>
+        <h6>Create</h6>
+        <Icon icon="expand_more" />
+      </div>
+      <div className="create-popup" style={{
+        ...layout.flexColumn,
+        gap: "0.5rem",
+        position: "fixed",
+        top: "5rem",
+        right: "1rem",
+        width: "12rem",
+        height: () => popupActive() ? "calc(3 * 2.5rem)" : "0",
+        background: "var(--surface)",
+        borderRadius: "1.5rem",
+        padding: () => popupActive() ? "1rem" : "0 1rem",
+        overflow: "hidden",
+        transition: "height .3s ease, padding .3s ease"
+      }}>
+        <IconLink href="#" icon="article">Set</IconLink>
+        <IconLink href="#" icon="groups">Groep</IconLink>
+      </div>
+    </div>
   )
 }
 
