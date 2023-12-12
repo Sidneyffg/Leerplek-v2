@@ -10,6 +10,7 @@ export function Page(props) {
       <Nav />
       <Body>
         <h1>{text}</h1>
+        <p>Test</p>
       </Body>
     </>
   )

@@ -20,9 +20,6 @@ export function Nav() {
           <IconLink href="#" icon="article">Materiaal</IconLink>
           <IconLink href="#" icon="groups">Groepen</IconLink>
         </div>
-        <div className="links-bottom">
-          <IconLink href="#" icon="notifications">Berichten</IconLink>
-        </div>
         <Account />
       </nav>
       <nav className="top">
@@ -107,33 +104,91 @@ export function CreateBtn(props) {
 }
 
 export function Account(props) {
+  const [popupActive, setPopupActive] = createSignal(false);
+  document.addEventListener("click", (e) => {
+    const t = e.target;
+    if (t.closest(".account-container") == null) setPopupActive(false);
+  });
+
   return (
-    <a href="#" className="account" id="account__nav__btn" style={{
-      ...layout.flexRow,
-      gap: ".5rem",
-      flexShrink: 0,
-      cursor: "pointer",
+    <div className="account-container" style={{
       position: "relative"
     }}>
-      <div className="profile" style={{
-        height: "3rem",
-        width: "3rem",
-        borderRadius: "1.5rem",
+      <div href="#" className="account-btn" id="account__nav__btn" style={{
+        ...layout.flexRow,
+        gap: ".5rem",
         flexShrink: 0,
-        background: "var(--surface)"
-      }}>
+        cursor: "pointer",
+        position: "relative"
+      }} onClick={() => setPopupActive(e => !e)}>
+        <div className="profile" style={{
+          height: "3rem",
+          width: "3rem",
+          borderRadius: "1.5rem",
+          flexShrink: 0,
+          background: "var(--surface)"
+        }}>
 
+        </div>
+        <div className="name" style={{
+          ...layout.flexColumn,
+          width: "100%",
+          height: "3rem"
+        }}>
+          <h6 style={{
+            marginBottom: "-0.4rem"
+          }}>Robin de Vos</h6>
+          <span>4VE</span>
+        </div>
       </div>
-      <div className="name" style={{
-        ...layout.flexColumn,
-        width: "100%",
-        height: "3rem"
+      <AccountPopup active={popupActive} />
+    </div>
+  )
+}
+
+function AccountPopup(props) {
+  return (
+    <div className="account-popup" style={{
+      ...layout.flexColumn,
+      justifyContent: "flex-start",
+      gap: "0.5rem",
+      position: "fixed",
+      bottom: "5rem",
+      left: "1rem",
+      height: () => props.active() ? "20rem" : "0",
+      padding: () => props.active() ? "1rem" : "0 1rem",
+      width: () => props.active() ? "24rem" : "14rem",
+      background: "var(--surface)",
+      borderRadius: "0.6rem",
+      transition: "height .3s ease, padding .3s ease, width .3s ease",
+      overflow: "hidden"
+    }}>
+      <div className="account-popup-profile" style={{
+        ...layout.flexRow,
+        gap: "0.5rem"
       }}>
-        <h6 style={{
-          marginBottom: "-0.4rem"
-        }}>Robin de Vos</h6>
-        <span>4VE</span>
+        <div className="profile" style={{
+          height: "3rem",
+          width: "3rem",
+          borderRadius: "1.5rem",
+          flexShrink: 0,
+          background: "var(--accent)",
+        }}>
+        </div>
+        <div className="name" style={{
+          ...layout.flexColumn,
+          width: "100%",
+          height: "3rem"
+        }}>
+          <h6 style={{
+            marginBottom: "-0.4rem"
+          }}>Robin de Vos</h6>
+          <span>4VE</span>
+        </div>
       </div>
-    </a>
+      <IconLinkAccentHover href="#" icon="notifications">Berichten</IconLinkAccentHover>
+      <IconLinkAccentHover href="#" icon="settings">Instellingen</IconLinkAccentHover>
+      <IconLinkAccentHover href="#" icon="logout">Uitloggen</IconLinkAccentHover>
+    </div>
   )
 }
