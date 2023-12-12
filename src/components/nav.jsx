@@ -1,14 +1,15 @@
 import "./nav.css";
-import { Icon, IconLink, IconLinkAccentHover } from "./icons";
+import { Icon, IconLink, IconLinkAccent } from "./icons";
 import * as fonts from "#src/styles/fonts";
 import * as layout from "#src/styles/layout";
 
+import { Document } from "#src/main";
 import { createID } from "#src/js/utils";
 import { createEffect, createSignal, createRef } from "@honeyjs/dom";
 
 export function Nav() {
   return (
-    <>
+    <nav>
       <nav className="side">
         <div className="branding"></div>
         <div className="links">
@@ -23,10 +24,12 @@ export function Nav() {
         <Account />
       </nav>
       <nav className="top">
-        <Search />
+        <div className="center">
+          <Search />
+        </div>
         <CreateBtn />
       </nav>
-    </>
+    </nav>
   )
 }
 
@@ -37,7 +40,7 @@ export function Search(props) {
   return (
     <label for={id} style={{
       height: "3rem",
-      width: "min(calc(100% - 4rem), 30rem)",
+      width: "min(calc(100%), 30rem)",
       background: "var(--surface)",
       borderRadius: "1.5rem",
       padding: ".5rem 1rem",
@@ -62,13 +65,17 @@ export function Search(props) {
 
 export function CreateBtn(props) {
   const [popupActive, setPopupActive] = createSignal(false);
+  Document.addEventListener("click", (e) => {
+    const t = e.target;
+    if (t.closest(".create-container") == null) setPopupActive(false);
+  });
 
   return (
-    <div className="create-btn" style={{
+    <div className="create-container" style={{
       position: "relative",
       width: "12rem"
     }}>
-      <div style={{
+      <div className="create-btn" style={{
         ...layout.flexRow,
         justifyContent: "center",
         height: "3rem",
@@ -105,7 +112,7 @@ export function CreateBtn(props) {
 
 export function Account(props) {
   const [popupActive, setPopupActive] = createSignal(false);
-  document.addEventListener("click", (e) => {
+  Document.addEventListener("click", (e) => {
     const t = e.target;
     if (t.closest(".account-container") == null) setPopupActive(false);
   });
@@ -155,9 +162,9 @@ function AccountPopup(props) {
       position: "fixed",
       bottom: "5rem",
       left: "1rem",
-      height: () => props.active() ? "20rem" : "0",
+      height: () => props.active() ? "15rem" : "0",
       padding: () => props.active() ? "1rem" : "0 1rem",
-      width: () => props.active() ? "24rem" : "14rem",
+      width: () => props.active() ? "20rem" : "14rem",
       background: "var(--surface)",
       borderRadius: "0.6rem",
       transition: "height .3s ease, padding .3s ease, width .3s ease",
@@ -165,7 +172,9 @@ function AccountPopup(props) {
     }}>
       <div className="account-popup-profile" style={{
         ...layout.flexRow,
-        gap: "0.5rem"
+        gap: "0.5rem",
+        marginBottom: "1rem",
+        cursor: "pointer"
       }}>
         <div className="profile" style={{
           height: "3rem",
@@ -186,9 +195,9 @@ function AccountPopup(props) {
           <span>4VE</span>
         </div>
       </div>
-      <IconLinkAccentHover href="#" icon="notifications">Berichten</IconLinkAccentHover>
-      <IconLinkAccentHover href="#" icon="settings">Instellingen</IconLinkAccentHover>
-      <IconLinkAccentHover href="#" icon="logout">Uitloggen</IconLinkAccentHover>
+      <IconLinkAccent href="#" icon="notifications">Berichten</IconLinkAccent>
+      <IconLinkAccent href="#" icon="settings">Instellingen</IconLinkAccent>
+      <IconLinkAccent href="#" icon="logout">Uitloggen</IconLinkAccent>
     </div>
   )
 }

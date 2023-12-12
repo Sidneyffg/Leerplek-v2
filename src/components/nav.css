@@ -30,6 +30,17 @@ nav.top {
   gap: 1rem;
 }
 
+nav.top > .center {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+nav.top > .center > label {
+  width: 100%;
+}
+
 .filler {
   margin-inline: auto;
 }

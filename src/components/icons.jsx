@@ -49,7 +49,7 @@ export function IconLink(props) {
  * @param {string} props.target
  * @returns 
  */
-export function IconLinkAccentHover(props) {
+export function IconLinkAccent(props) {
   return (
     <a href={props.href} target={props.target ?? "_parent"} style={{
       ...flexRow,
@@ -61,7 +61,7 @@ export function IconLinkAccentHover(props) {
       fontSize: "20px",
       transition: "color .3s ease",
       borderRadius: ".6rem"
-    }} className="IconLinkAccentHover">
+    }} className="IconLinkAccent">
       <Icon icon={props.icon} style={{
         fontSize: "1.5rem"
       }} />

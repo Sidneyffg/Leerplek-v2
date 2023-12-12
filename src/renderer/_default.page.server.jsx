@@ -7,6 +7,7 @@ import { dangerouslySkipEscape, escapeInject } from "vike/server";
 async function render(pageContext) {
   const { Page, pageProps } = pageContext;
   let pageHTML = "";
+  // cache results?
   if (Page) pageHTML = renderToHTML(Page);
 
   return escapeInject`
