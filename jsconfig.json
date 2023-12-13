@@ -7,6 +7,9 @@
     "types": [
       "vite/client"
     ],
+    "typeRoots": [
+      "api/types"
+    ],
     "paths": {
       "#src/*": [
         "src/*"

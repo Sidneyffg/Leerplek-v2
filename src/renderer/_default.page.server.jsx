@@ -5,10 +5,13 @@ import { dangerouslySkipEscape, escapeInject } from "vike/server";
  * @param {import("vike/types").PageContext} pageContext 
  */
 async function render(pageContext) {
-  const { Page, pageProps } = pageContext;
+  const { Page, pageProps, exports } = pageContext;
   let pageHTML = "";
   // cache results?
   if (Page) pageHTML = renderToHTML(Page);
+  /* if (exports.Options) {
+    if (!(exports.Options.accessLevel >= 1 && pageContext.user && pageContext.user.accessLevel == exports.Options.accessLevel)) return escapeInject`{"msg": "nee"}`;
+  } */
 
   return escapeInject`
   <!DOCTYPE html>

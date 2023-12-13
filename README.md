@@ -13,6 +13,12 @@ Manually set PROD to true in .env file to force production mode on development c
 PROD=true
 ```
 
+## Routes
+- `/new/:item`, url for creating sets, notes, etc.
+
+- `/login`, url for logging in
+- `/logout`, url for logging out
+
 ## Authentication
 
 Authentication using JWT (JSON web token)

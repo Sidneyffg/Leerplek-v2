@@ -95,16 +95,17 @@ export function CreateBtn(props) {
         position: "fixed",
         top: "5rem",
         right: "1rem",
-        width: "12rem",
-        height: () => popupActive() ? "calc(3 * 2.5rem)" : "0",
+        width: "16rem",
+        height: () => popupActive() ? "calc(4 * 2.5rem)" : "0",
         background: "var(--surface)",
         borderRadius: "1.5rem",
         padding: () => popupActive() ? "1rem" : "0 1rem",
         overflow: "hidden",
         transition: "height .3s ease, padding .3s ease"
       }}>
-        <IconLink href="#" icon="article">Set</IconLink>
-        <IconLink href="#" icon="groups">Groep</IconLink>
+        <IconLink href="/new/set" icon="article">Set</IconLink>
+        <IconLink href="/new/group" icon="groups">Groep</IconLink>
+        <IconLink href="/new/note" icon="description">Aantekening</IconLink>
       </div>
     </div>
   )
@@ -170,7 +171,7 @@ function AccountPopup(props) {
       transition: "height .3s ease, padding .3s ease, width .3s ease",
       overflow: "hidden"
     }}>
-      <div className="account-popup-profile" style={{
+      <a href="#" className="account-popup-profile" style={{
         ...layout.flexRow,
         gap: "0.5rem",
         marginBottom: "1rem",
@@ -194,10 +195,10 @@ function AccountPopup(props) {
           }}>Robin de Vos</h6>
           <span>4VE</span>
         </div>
-      </div>
+      </a>
       <IconLinkAccent href="#" icon="notifications">Berichten</IconLinkAccent>
       <IconLinkAccent href="#" icon="settings">Instellingen</IconLinkAccent>
-      <IconLinkAccent href="#" icon="logout">Uitloggen</IconLinkAccent>
+      <IconLinkAccent href="/logout" icon="logout">Uitloggen</IconLinkAccent>
     </div>
   )
 }
