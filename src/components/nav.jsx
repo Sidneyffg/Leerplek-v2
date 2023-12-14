@@ -7,29 +7,47 @@ import { Document } from "#src/main";
 import { createID } from "#src/js/utils";
 import { createEffect, createSignal, createRef } from "@honeyjs/dom";
 
-export function Nav() {
+/**
+ * @param {object} props
+ * @param {boolean} props.collapsed
+ */
+export function Nav(props) {
+  const [collapsed, setCollapsed] = createSignal(props.collapsed ?? false);
+
+  createEffect(() => {
+    Document.documentElement?.style.setProperty("--side-width", collapsed() ? "5rem" : "16rem");
+  });
+
   return (
-    <nav>
-      <nav className="side">
-        <div className="branding"></div>
-        <div className="links">
-          <IconLink href="/" icon="home">Start</IconLink>
-          <IconLink href="#" icon="calendar_month">Agenda</IconLink>
-          <IconLink href="#" icon="bar_chart">Cijfers</IconLink>
-          <IconLink href="#" icon="check_circle">Afwezigheid</IconLink>
-          <IconLink href="#" icon="school">Vakken</IconLink>
-          <IconLink href="#" icon="article">Materiaal</IconLink>
-          <IconLink href="#" icon="groups">Groepen</IconLink>
-        </div>
-        <Account />
+    <>
+      <nav>
+        <nav className="side">
+          <div className="branding"></div>
+          <div className="links">
+            <IconLink href="/" icon="home" collapsed={collapsed}>Start</IconLink>
+            <IconLink href="/agenda" icon="calendar_month" collapsed={collapsed}>Agenda</IconLink>
+            <IconLink href="#" icon="bar_chart" collapsed={collapsed}>Cijfers</IconLink>
+            <IconLink href="#" icon="check_circle" collapsed={collapsed}>Afwezigheid</IconLink>
+            <IconLink href="#" icon="school" collapsed={collapsed}>Vakken</IconLink>
+            <IconLink href="#" icon="article" collapsed={collapsed}>Materiaal</IconLink>
+            <IconLink href="#" icon="groups" collapsed={collapsed}>Groepen</IconLink>
+          </div>
+          <Account collapsed={collapsed} />
+        </nav>
+        <nav className="top">
+          <div className="center">
+            <Search />
+          </div>
+          <CreateBtn />
+        </nav>
       </nav>
-      <nav className="top">
-        <div className="center">
-          <Search />
-        </div>
-        <CreateBtn />
-      </nav>
-    </nav>
+      <div style={{
+        paddingLeft: "calc(var(--side-width) + 1rem)",
+        paddingTop: "var(--top-height)",
+      }}>
+        {props.children}
+      </div>
+    </>
   )
 }
 
@@ -113,6 +131,7 @@ export function CreateBtn(props) {
 
 export function Account(props) {
   const [popupActive, setPopupActive] = createSignal(false);
+
   Document.addEventListener("click", (e) => {
     const t = e.target;
     if (t.closest(".account-container") == null) setPopupActive(false);
@@ -138,16 +157,18 @@ export function Account(props) {
         }}>
 
         </div>
-        <div className="name" style={{
-          ...layout.flexColumn,
-          width: "100%",
-          height: "3rem"
-        }}>
-          <h6 style={{
-            marginBottom: "-0.4rem"
-          }}>Robin de Vos</h6>
-          <span>4VE</span>
-        </div>
+        {() => props.collapsed() ? "" : (
+          <div className="name" style={{
+            ...layout.flexColumn,
+            width: "100%",
+            height: "3rem"
+          }}>
+            <h6 style={{
+              marginBottom: "-0.4rem"
+            }}>Robin de Vos</h6>
+            <span>4VE</span>
+          </div>
+        )}
       </div>
       <AccountPopup active={popupActive} />
     </div>

@@ -19,14 +19,17 @@ export function Icon(props) {
  * @param {string} props.icon
  * @param {string} props.href
  * @param {string} props.target
+ * @param {Function} props.collapsed
  * @returns 
  */
 export function IconLink(props) {
+  if (!props.collapsed) props.collapsed = () => false
+
   return (
     <a href={props.href} target={props.target ?? "_parent"} style={{
       ...flexRow,
       gap: "0.5rem",
-      height: "2.5rem",
+      height: "3rem",
       width: "100%",
       paddingInline: ".75rem",
       fontWeight: "700",
@@ -37,7 +40,7 @@ export function IconLink(props) {
       <Icon icon={props.icon} style={{
         fontSize: "1.5rem"
       }} />
-      {props.children}
+      {() => props.collapsed() ? "" : props.children}
     </a>
   )
 }

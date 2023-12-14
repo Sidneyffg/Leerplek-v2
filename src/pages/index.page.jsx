@@ -7,11 +7,10 @@ export function Page(props) {
   const [text, setText] = createSignal("Hello world!");
   return (
     <>
-      <Nav />
-      <Body>
+      <Nav>
         <h1>{text}</h1>
         <p>Test</p>
-      </Body>
+      </Nav>
     </>
   )
 }
