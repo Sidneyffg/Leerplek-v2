@@ -32,6 +32,9 @@ export function Nav(props) {
             <IconLink href="#" icon="article" collapsed={collapsed}>Materiaal</IconLink>
             <IconLink href="#" icon="groups" collapsed={collapsed}>Groepen</IconLink>
           </div>
+          <div className="collapse" onClick={() => setCollapsed(e => !e)}>
+            <Icon icon="chevron_right"></Icon>
+          </div>
           <Account collapsed={collapsed} />
         </nav>
         <nav className="top">

@@ -23,7 +23,8 @@ export function Icon(props) {
  * @returns 
  */
 export function IconLink(props) {
-  if (!props.collapsed) props.collapsed = () => false
+  if (!props.collapsed) props.collapsed = () => false;
+  props.href ??= "";
 
   return (
     <a href={props.href} target={props.target ?? "_parent"} style={{
@@ -40,7 +41,11 @@ export function IconLink(props) {
       <Icon icon={props.icon} style={{
         fontSize: "1.5rem"
       }} />
-      {() => props.collapsed() ? "" : props.children}
+      {() => props.collapsed() ? <span></span> : (
+        <span>
+          {props.children}
+        </span>
+      )}
     </a>
   )
 }
